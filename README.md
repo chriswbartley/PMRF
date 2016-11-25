@@ -9,13 +9,17 @@ A typical process to build a partially monotone knowledge integrated model is:
 
 2. Solve PMRandomForestClassifier on all training data and with NO constraints.
 
-3. Decide which features are suggested monotone in the response, based on domain knowledge.
+3. You can assess monotonicity of the unconstrained model for particular features using calc_mcc_interp in the PM repository (just wrap the pmrf model in model_pmrf_c()).
 
-4. Build a constraint set using 'gen_constrset_adaptive' in the PM repository (\chriswbartley\PM). Pass in the trained PMRF model wrapped in the model_pmrf_c() object (just a wrapper so that the predict() function is clearly mapped).
+4. Decide which features are suggested monotone in the response, based on domain knowledge.
 
-5. Solve the CONSTRAINED RF using pmrf.fitConstrained() and passing in the generated constraints. 
+5. Build a constraint set using 'gen_constrset_adaptive' in the PM repository (\chriswbartley\PM). Pass in the trained PMRF model wrapped in the model_pmrf_c() object (just a wrapper so that the predict() function is clearly mapped).
 
-6. Once trained, use predictConstrained() to predict using the monotone model.
+6. Solve the CONSTRAINED RF using pmrf.fitConstrained() and passing in the generated constraints. 
+
+7. Once trained, use predictConstrained() to predict using the monotone model.
+
+8. You can assess resulting monotonicity of the model for particular features using calc_mcc_interp in the PM repository (just wrap the pmrf model in model_pmrf_c()).
 
 
 DEPENDENCIES:
